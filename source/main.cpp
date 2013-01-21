@@ -17,6 +17,8 @@
 #define PI 3.14159265
 
 #include "classicbody_png.h"
+#include "classicaccent_png.h"
+#include "classicshield_png.h"
 
 
 
@@ -30,11 +32,13 @@ int main(int argc, char **argv) {
     GRRLIB_Init();
 	
 	GRRLIB_texImg *clbody = GRRLIB_LoadTexture(classicbody_png);
+	GRRLIB_texImg *claccent = GRRLIB_LoadTexture(classicaccent_png);
+	GRRLIB_texImg *clshield = GRRLIB_LoadTexture(classicshield_png);
 
     // Initialise the Wiimotes
     WPAD_Init();
 	
-	Ship p1ship(45.25483400, 30, 100, 100, .1, 0xAAFFFFFF, 0xFFFFFFFF);
+	Ship p1ship(45.25483400, 30, 100, 100, .1, 0x00FFFFFF, 0xFFFFFFFF);
 
     // Loop forever
     while(1) {
@@ -67,6 +71,7 @@ int main(int argc, char **argv) {
 		
 		
 		GRRLIB_DrawImg(p1ship.getXdraw(), p1ship.getYdraw(), clbody, p1ship.getTheta(), 1, 1, p1ship.getSColor());
+		GRRLIB_DrawImg(p1ship.getXdraw(), p1ship.getYdraw(), claccent, p1ship.getTheta(), 1, 1,  0xFFFFFFFF);
 		//GRRLIB_DrawImg(100, 100, clbody, 0, 1, 1, 0xFFFFFFFF);
 
         GRRLIB_Render();  // Render the frame buffer to the TV
